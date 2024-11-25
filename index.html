@@ -32,12 +32,19 @@
 
     <script>
       let id = document.querySelector('.form-control');
+      let password = document.querySelectorAll('.form-control')[1];
       let form = document.querySelector('form');
 
       form.addEventListener('submit',function(e){
         if (id.value == ''){
           e.preventDefault(); // 폼 전송 막는 함수
           alert('아이디를 입력하세요');
+        } else if(password.value == '' || password.value.length < 6){
+          e.preventDefault();
+          alert('암호를 입력하세요');
+            if (password.value.length < 6){
+              alert('6자 이상의 암호를 입력하세요');
+            }
         }
       });
 

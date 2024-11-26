@@ -22,7 +22,7 @@
           <input type="text" class="form-control">
          </div>
          <div class="my-3">
-           <input type="password" class="form-control">
+           <input type="password" class="form-control" id="password">
          </div>
          <button type="submit" class="btn btn-primary">전송</button>
          <button type="button" class="btn btn-danger" id="close">닫기</button>
@@ -31,15 +31,24 @@
 	  </div>
 
     <script>
+
+      document.getElementById('password').addEventListener('input',function(){
+        console.log("입력되었습니다")
+      });
+      document.getElementById('password').addEventListener('change',function(){
+        console.log("변경되었습니다") //값이 변경되고 포커스를 잃을 때
+      });
+
       let id = document.querySelector('.form-control');
       let password = document.querySelectorAll('.form-control')[1];
       let form = document.querySelector('form');
 
       form.addEventListener('submit',function(e){
         if (id.value == ''){
+          //truthy 자료 : 0제외 숫자,문자,[],{} falsy 자료: 0, '' , nill, undefined, NaN
           e.preventDefault(); // 폼 전송 막는 함수
           alert('아이디를 입력하세요');
-        } else if(password.value == '' || password.value.length < 6){
+        } else if(password.value == '' || password.value.length < 6){ // && and연산 (둘다 참) , || or연산(하나라도 참)
           e.preventDefault();
           alert('암호를 입력하세요');
             if (password.value.length < 6){

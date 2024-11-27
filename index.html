@@ -15,7 +15,7 @@
     
 	  <!-- 모달 창 -->
 	<div class="black-bg ">
-		<div class="white-bg">
+		<div class="white-bg ">
       <h3>로그인</h3>
       <form action="success.html">
         <div class="my-3">
@@ -51,7 +51,7 @@
         } else if(password.value == '' || password.value.length < 6){ // && and연산 (둘다 참) , || or연산(하나라도 참)
           e.preventDefault();
           alert('암호를 입력하세요');
-            if (password.value.length < 6){
+            if (password.value.length < 6 && password.value != ''){
               alert('6자 이상의 암호를 입력하세요');
             }
         }
@@ -64,14 +64,39 @@
 
     </script>
 	  
-	<nav class="navbar navbar-light bg-light">
+	<nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
+    <span class="badge bg-dark">Light 🔄</span>
     <span class="navbar-brand">Navbar</span>
     <button class="navbar-toggler" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
   </div>
 </nav> 
+
+<script>
+
+var count = 0;
+
+document.querySelector('.badge').addEventListener('click',function(){
+  count += 1;
+  if(count % 2 != 0){
+    document.querySelector('.badge').classList.remove('bg-dark');
+    document.querySelector('.main').classList.remove('bg-dark');
+    document.querySelector('.navbar').classList.replace('bg-dark','bg-light');
+    document.querySelector('.navbar').classList.replace('navbar-dark','navbar-light');
+    document.querySelector('.badge').innerHTML = "Dark 🔄";
+  }else{
+    document.querySelector('.badge').classList.add('bg-dark');
+    document.querySelector('.main').classList.add('bg-dark');
+    document.querySelector('.navbar').classList.replace('bg-light','bg-dark');
+    document.querySelector('.navbar').classList.replace('navbar-light','navbar-dark');
+    document.querySelector('.badge').innerHTML = "Light 🔄";
+  }
+})
+
+
+</script>
 	  
  <ul class="list-group ">
   <li class="list-group-item">An item</li>
@@ -81,8 +106,11 @@
   <li class="list-group-item">And a fifth one</li>
 </ul> 
 	  
-	  
-	<button id="login"> 로그인 </button>
+	<main class="main bg-dark">
+    
+    <button id="login"> 로그인 </button>
+
+  </main>  
 
 	  <script>
 		  
@@ -107,6 +135,17 @@
       })
 	  </script>
 	  
+    <script>
+
+      //변수 : 선언 , 할당 , 범위(지역,전역)
+      var 이름 = 'kim';
+      let let변수명;//재선언 불가 (변수명 중복 X) , 범위:{}
+      const const변수명 = undefined;//재선언 불가, 재할당 불가 (변하면 안되는 값 => 상수 보관할 때 용이), 범위:{}
+
+
+
+
+    </script>
 	  
 	  
 	  

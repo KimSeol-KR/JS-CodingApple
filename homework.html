@@ -78,12 +78,17 @@ function 진짜삼육구Gpt(Number) {
          
 
         function 합격했냐(개론,민법){
-            if(개론 <= 40 || 민법 <= 40){
-                console.log("불합격");
-            }else if(개론 + 민법 >= 120){
-                console.log("합격");
+            if((개론 > 0 && 개론 <= 100)&&(민법 > 0 && 민법 <= 100)){
+                if(개론 <= 40 || 민법 <= 40){
+                    console.log("불합격");
+                }else if(개론 + 민법 >= 120){
+                    console.log("합격");
+                }else{
+                    console.log("불합격");
+                }
+
             }else{
-                console.log("불합격");
+                alert("장난치지마라");
             }
         }
 

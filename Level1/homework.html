@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숙제</title>
+</head>
+<body>
+    
+    (응용) 원래의 369게임 룰을 적용하려면 어떻게 해야할까요?
+
+3의 배수에서 박수를 치는게 아니라 끝자리가 3,6,9로 끝나는 숫자라면 '박수'를 출력되게 하는겁니다. 
+
+이건 숫자의 마지막자리를 어떻게 파악할지 구글 검색해보면 쉽게 해결되니 답은 없습니다. 
+
+ 
+
+ 
+
+ 
+
+(응용2) 합격판독기에 0에서 100사이 숫자가 아닌걸 입력하면 장난치지 말라고 alert를 띄우려면 어떻게 코드짜야할까요?
+
+이것도 간단하게 if문 알아서 추가해봅시다. 
+    
+
+    <script>
+        function 삼육구게임(inputN) {
+           if(inputN % 3 == 0 || inputN % 6 == 0 ||inputN % 9 == 0 ){
+            if(inputN % 9 == 0){
+                console.log("박수x2");
+            }else{
+                console.log("박수");
+            }
+           }else{
+            console.log("통과")
+           }
+        }
+
+       
+        
+    function 진짜삼육구(Number) {
+    // 숫자를 문자열로 변환 중요
+    let numberString = Number.toString();
+
+    // 문자열의 마지막 문자를 가져오기
+    let last_Num = numberString[numberString.length - 1]; 
+
+    if(last_Num === '3' || last_Num === '6' || last_Num === '9'){
+        
+        console.log("박수");
+    }else{
+        console.log("통과");
+
+    }
+}
+
+
+function 진짜삼육구Gpt(Number) {
+    let numberString = Number.toString();
+    let 박수횟수 = 0;
+
+    // 각 자리의 숫자마다 3, 6, 9가 몇 번 나오는지 확인
+    for (let char of numberString) {
+        if (char === '3' || char === '6' || char === '9') {
+            박수횟수++;
+        }
+    }
+
+    if (박수횟수 > 0) {
+        console.log("박수 ".repeat(박수횟수).trim());
+    } else {
+        console.log("조용~");
+    }
+}
+
+
+         
+
+        function 합격했냐(개론,민법){
+            if((개론 > 0 && 개론 <= 100)&&(민법 > 0 && 민법 <= 100)){
+                if(개론 <= 40 || 민법 <= 40){
+                    console.log("불합격");
+                }else if(개론 + 민법 >= 120){
+                    console.log("합격");
+                }else{
+                    console.log("불합격");
+                }
+
+            }else{
+                alert("장난치지마라");
+            }
+        }
+
+
+
+    </script>
+
+</body>
+</html>

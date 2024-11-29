@@ -1,109 +1,160 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Level 2</title>
-</head>
-<body>
+	<link href="style.css" rel="stylesheet">
+	  
+    <title>JS Study</title>
+  </head>
+  <body>
     
-    <div>
-
-        <p>태조 이성계가 대어난 년도는?</p>
-        <form action="">
-            <input type="text" name="" id="answer">
-            <button id="send-answer" type="button">제출</button>
-        </form>
-        <script>
-            var count = 0;
-            
-            document.querySelector('#send-answer').addEventListener('click',function(){
-                
-                count += 1;
-                console.log(count);
-               
-                let answer = document.querySelector('#answer').value;
-               
-                if(count > 3){ // and 연산자 사용하면 좀 더 간단해짐
-                    alert("기회소진")
-                }else{
-                    if(answer == 1335){
-                    alert("성공");
-                    }else{
-                        alert("오답");
-                    }
-                }
-            })
-            
-            
-        </script>
+	  <!-- 모달 창 -->
+	<div class="black-bg ">
+		<div class="white-bg ">
+      <h3>로그인</h3>
+      <form action="success.html">
+        <div class="my-3">
+          <input type="text" class="form-control">
+         </div>
+         <div class="my-3">
+           <input type="password" class="form-control" id="password">
+         </div>
+         <button type="submit" class="btn btn-primary">전송</button>
+         <button type="button" class="btn btn-danger" id="close">닫기</button>
+      </form>
     </div>
-
-    <div class="alert alert-danger">
-        <span>5</span>초 이내 구매시 사은품!
-    </div>
+	  </div>
 
     <script>
 
-        setTimeout(function(){
-            $('.alert').hide();
-        },5000) //  setTimeout(콜백함수(){실행코드},초(ms)) ~초 후 에 실행
-        
-        
-        var sce = 5;
-        setInterval(function(){
-            if(sce > 0){
-                sce -= 1;
-                $('span').html(sce)
+      document.getElementById('password').addEventListener('input',function(){
+        console.log("입력되었습니다")
+      });
+      document.getElementById('password').addEventListener('change',function(){
+        console.log("변경되었습니다") //값이 변경되고 포커스를 잃을 때
+      });
+
+      let id = document.querySelector('.form-control');
+      let password = document.querySelectorAll('.form-control')[1];
+      let form = document.querySelector('form');
+
+      form.addEventListener('submit',function(e){
+        if (id.value == ''){
+          //truthy 자료 : 0제외 숫자,문자,[],{} falsy 자료: 0, '' , nill, undefined, NaN
+          e.preventDefault(); // 폼 전송 막는 함수
+          alert('아이디를 입력하세요');
+        } else if(password.value == '' || password.value.length < 6){ // && and연산 (둘다 참) , || or연산(하나라도 참)
+          e.preventDefault();
+          alert('암호를 입력하세요');
+            if (password.value.length < 6 && password.value != ''){
+              alert('6자 이상의 암호를 입력하세요');
             }
-        },1000) // ~초 마다 코드를 실행
-        //타이머 삭제 할 떈 clearTimeout(타이머)
+        }
+      });
+
+
+      // 전송버튼 누르면
+      // 저 input 에 입력한 값이 공백이면 알림창 띄우기
+      
+
     </script>
-    <!-- 
-     '내용'.includes('검사내용') 이것도 내용 검사임
-    
-    정규식으로 내용 검사
-     /내용/.test('검사내용') 
-     /[a-z 등 범위 가능]/.test('검사내용') 
-     /\S/ ==> 아무 문자 1개 (특수문자 포함)
-     /\S+/ ==> 왼쪽 문자 반복검색
-     /^a/ ==> a로 시작하는가?
-     /a$/ ==> a로 끝나는가?
-     /a|b/ ==> or 연산자 기호 |
+	  
+	<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <span class="badge bg-dark">Light 🔄</span>
+    <span class="navbar-brand">Navbar</span>
+    <button class="navbar-toggler" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav> 
 
-     /\S+@\S+\.\S+/.test('aaa@bbb.ccc') ==> aaa@bbb.ccc 형식을 정규식으로 확인  "."은 정규식 내에서 특별한 문법이므로 \로 구분해야 특수문자로서 검사 가능
+<script>
 
-     -->
+var count = 0;
+
+document.querySelector('.badge').addEventListener('click',function(){
+  count += 1;
+  if(count % 2 != 0){
+    document.querySelector('.badge').classList.remove('bg-dark');
+    document.querySelector('.main').classList.remove('bg-dark');
+    document.querySelector('.navbar').classList.replace('bg-dark','bg-light');
+    document.querySelector('.navbar').classList.replace('navbar-dark','navbar-light');
+    document.querySelector('.badge').innerHTML = "Dark 🔄";
+  }else{
+    document.querySelector('.badge').classList.add('bg-dark');
+    document.querySelector('.main').classList.add('bg-dark');
+    document.querySelector('.navbar').classList.replace('bg-light','bg-dark');
+    document.querySelector('.navbar').classList.replace('navbar-light','navbar-dark');
+    document.querySelector('.badge').innerHTML = "Light 🔄";
+  }
+})
+
+
+</script>
+	  
+ <ul class="list-group ">
+  <li class="list-group-item">An item</li>
+  <li class="list-group-item">A second item</li>
+  <li class="list-group-item">A third item</li>
+  <li class="list-group-item">A fourth item</li>
+  <li class="list-group-item">And a fifth one</li>
+</ul> 
+	  
+	<main class="main bg-dark">
     
+    <button id="login"> 로그인 </button>
+
+  </main>  
+
+	  <script>
+		  
+		  document.querySelector('.list-group') //==> querySelector는 css 선택자 문법을 그대로 쓸 수 있음 but 맨 위에 한개만 찾아줌
+		  document.querySelectorAll('.list-group')[0] //==> querySelectorAll 은 전부 다 찾아줌 그래서 인덱싱 [번호] 해줘야 함
+	  	
+		  document.querySelector('.navbar-toggler')
+		  .addEventListener('click', function(){
+			 
+			  document.querySelectorAll('.list-group')[0].classList.toggle('show');
+		  })
+      document.querySelector('#login')
+      .addEventListener('click',function(){
+        
+        document.querySelector('.black-bg').classList.toggle('alert');
+        document.querySelector('#close')
+        .addEventListener('click',function(){
+          
+          document.querySelector('.black-bg').classList.remove('alert');
+        })
+        
+      })
+	  </script>
+	  
     <script>
 
-        let age = 21;
-        const homeTown = "Ulsan";
+      //변수 : 선언 , 할당 , 범위(지역,전역)
+      var 이름 = 'kim';
+      let let변수명;//재선언 불가 (변수명 중복 X) , 범위:{}
+      const const변수명 = undefined;//재선언 불가, 재할당 불가 (변하면 안되는 값 => 상수 보관할 때 용이), 범위:{}
 
 
-        var 예금액;
-        var 미래예금액 ; //잔고
-        let 이자;
-        
-        function 이자율계산(예금액){
-            if(예금액 < 50000){
-                이자 = 예금액 * 0.15;
-                예금액 = 예금액 + 이자;
-                미래예금액 = 예금액 + (예금액 * 0.15);
-            }else{   
-                미래예금액 = 예금액 * (1.2 ** 2);
-            }
-            console.log(미래예금액);
-        }
 
-        var first = 360;
-        function 커피리필(first){
-           let final =  first + (first * 2 / 3) + ((first / 9) * 4);
-           console.log(final);
-        }
+
     </script>
-</body>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  
+  </body>
 </html>

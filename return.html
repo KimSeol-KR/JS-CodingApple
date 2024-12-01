@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return</title>
+</head>
+<body>
+    <script>
+        function ms변환기(분,초){
+            var 값 = ((분*60)+초)*1000;
+            return 값;
+        }
+
+        function 할인가(가격,a){
+            var 할인가격 = Math.floor(가격 * 0.9);// 10프로 할인가 == 0.90 곱해서 구함
+            // 할인가격 = parseInt(할인가격);
+            if(a === true){
+                return 할인가격 -= 1.5;
+            }else{
+                return 할인가격;
+            }
+        }
+        console.log(할인가(70,false));
+        console.log(할인가(10,true));
+
+    </script>
+</body>
+</html>

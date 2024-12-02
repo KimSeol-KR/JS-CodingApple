@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>scroll</title>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <span class="badge bg-dark">Light 🔄</span>
+          <span class="navbar-brand">Navbar</span>
+          <button class="navbar-toggler" type="button">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav> 
+
+      <script>
+
+        window.addEventListener('scroll',function(){
+            window.scrollY //스크롤 바를 얼마나 내렸는가 (중요)
+            window.pageYOffset//위와 동일
+            // window.scrollTo(0,100);// 강제로 스크롤하기 window.scrollTo(x,y);
+            // window.scrollBy(0,100);//현재 위치부터 좌표값 만큼 스크롤 해주세요
+        });
+
+
+      </script>
+
+
+
+      <div style="height: 1000px;"></div>
+        
+      <div class="lorem" style="sidth: 200px; height:100px; overflow: scroll;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+         Placeat laborum et aspernatur hic dolore ut aliquam quisquam! Laboriosam voluptatem esse perspiciatis aliquid deserunt commodi ratione suscipit.
+         Sapiente veniam nesciunt unde?
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+         Neque, molestiae blanditiis magni dolore harum, accusamus ullam nesciunt minima, laboriosam officia dolorum sint et odit fugit placeat adipisci numquam.
+         Quos, explicabo?
+        </div>
+
+        <script>
+
+            // div의 스크롤바 내린 양 + 눈에 보이는 박스 높이 == div 의 실제 높이  오차가 나므로 약간의 여유가 있게
+            $('.lorem').on('scroll',function(){
+                var 스크롤양 = document.querySelector('.lorem').scrollTop// <div> 스크롤바 내린 높이는 셀렉터.scrollTop (증요)
+                var 스크롤바높이 = document.querySelector('.lorem').scrollHeight// <div> 실제높이는 셀렉터.scrollHeight (증요)
+                var div높이 = document.querySelector('.lorem').clientHeight// <div> 보이는 div박스높이는 셀렉터.clientHeight (증요)
+                
+            })
+        </script>
+</body>
+</html>

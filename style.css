@@ -30,3 +30,22 @@
 	opacity: 1;
 	
 }
+.navbar{
+	position: fixed;
+	width: 100%;
+	
+}
+.navbar-brand{
+	transition: all 0.5s;
+}
+.navbar-scroll{
+	font-size: 10px;
+	transition: all 0.5s;
+}
+.line{
+	position: fixed;
+	width: 100%;
+	margin-top: 5.7vh;
+	background-color: black;
+	height: 1vh;
+}

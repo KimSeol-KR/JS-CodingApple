@@ -22,6 +22,15 @@
       <script>
 
         window.addEventListener('scroll',function(){
+          // console.log(window.scrollY);
+          if(window.scrollY >= 100){
+            $(".navbar-brand").addClass("navbar-scroll");
+          }else{
+            $(".navbar-brand").removeClass("navbar-scroll");
+          }
+        })
+
+        window.addEventListener('scroll',function(){
             window.scrollY //스크롤 바를 얼마나 내렸는가 (중요)
             window.pageYOffset//위와 동일
             // window.scrollTo(0,100);// 강제로 스크롤하기 window.scrollTo(x,y);
@@ -51,6 +60,20 @@
         </div>
 
         <script>
+
+          $('.lorem').on('scroll',function(){
+            var a = document.querySelector('.lorem').scrollTop// <div> 스크롤바 내린 높이는 셀렉터.scrollTop (증요)
+            var b = document.querySelector('.lorem').clientHeight// <div> 보이는 div박스높이는 셀렉터.clientHeight (증요)
+            var c = document.querySelector('.lorem').scrollHeight// <div> 실제높이는 셀렉터.scrollHeight (증요)
+           
+              if(a+b == c-5){
+                alert("동의 하십니까?");
+              }
+            // console.log("스크롤양:" + document.querySelector('.lorem').scrollTop);
+            // console.log("스크롤바 높이:"+document.querySelector('.lorem').scrollHeight);
+            // console.log("Div박스 높이:"+document.querySelector('.lorem').clientHeight);
+
+          });
 
             // div의 스크롤바 내린 양 + 눈에 보이는 박스 높이 == div 의 실제 높이  오차가 나므로 약간의 여유가 있게
             $('.lorem').on('scroll',function(){

@@ -42,8 +42,26 @@
 
 
 
-      <div style="height: 1000px;"></div>
-        
+      <div class="line"></div>
+      <div class="neayoung" style="height: 2000px; padding-top: 7vh ;"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad modi minus cum impedit, vitae libero doloribus temporibus sed, non debitis reiciendis officiis a voluptas pariatur. Dicta sequi reiciendis a quis!</div>
+
+      <script>
+
+        var scrollValue =  window.pageYOffset;
+        var realHeight = document.querySelector('html').scrollHeight
+        window.addEventListener('scroll',function(){
+          console.log(scrollValue);
+           var scrollPer = scrollValue/realHeight *100;
+          // console.log(window.scrollY);
+          if(scrollPer >= 1){
+            document.querySelector('.line').style.width = scrollPer + "%";
+
+          }else{
+            document.querySelector('.line').style.width = '100%';
+          }
+        })
+      </script>
+    
       <div class="lorem" style="sidth: 200px; height:100px; overflow: scroll;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
          Placeat laborum et aspernatur hic dolore ut aliquam quisquam! Laboriosam voluptatem esse perspiciatis aliquid deserunt commodi ratione suscipit.
          Sapiente veniam nesciunt unde?
@@ -66,7 +84,7 @@
             var b = document.querySelector('.lorem').clientHeight// <div> 보이는 div박스높이는 셀렉터.clientHeight (증요)
             var c = document.querySelector('.lorem').scrollHeight// <div> 실제높이는 셀렉터.scrollHeight (증요)
            
-              if(a+b == c-5){
+              if(a+b > c-10){
                 alert("동의 하십니까?");
               }
             // console.log("스크롤양:" + document.querySelector('.lorem').scrollTop);

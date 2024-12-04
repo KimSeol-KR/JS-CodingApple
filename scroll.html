@@ -31,7 +31,7 @@
         })
 
         window.addEventListener('scroll',function(){
-            window.scrollY //스크롤 바를 얼마나 내렸는가 (중요)
+          //  console.log(window.scrollY); //스크롤 바를 얼마나 내렸는가 (중요)
             window.pageYOffset//위와 동일
             // window.scrollTo(0,100);// 강제로 스크롤하기 window.scrollTo(x,y);
             // window.scrollBy(0,100);//현재 위치부터 좌표값 만큼 스크롤 해주세요
@@ -47,22 +47,20 @@
 
       <script>
 
-        var scrollValue =  window.pageYOffset;
-        var realHeight = document.querySelector('html').scrollHeight
         window.addEventListener('scroll',function(){
-          console.log(scrollValue);
-           var scrollPer = scrollValue/realHeight *100;
-          // console.log(window.scrollY);
-          if(scrollPer >= 1){
-            document.querySelector('.line').style.width = scrollPer + "%";
+            var scrollValue =  window.scrollY;
+            var realHeight = document.querySelector('.neayoung').scrollHeight;
+            var viewportHeight = window.innerHeight; // 화면에 보이는 영역 (뷰포트 높이)
 
-          }else{
-            document.querySelector('.line').style.width = '100%';
-          }
-        })
+          // 스크롤 가능한 높이 (전체 높이에서 보이는 영역을 뺀 값)
+           var scrollableHeight = realHeight - viewportHeight;
+           // 스크롤 비율 계산
+           var scrollPer = scrollValue/scrollableHeight *100;
+           document.querySelector('.line').style.width = scrollPer + "%";
+          })        
       </script>
     
-      <div class="lorem" style="sidth: 200px; height:100px; overflow: scroll;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      <div class="lorem" style="width: 100%; height:100px; overflow: scroll;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
          Placeat laborum et aspernatur hic dolore ut aliquam quisquam! Laboriosam voluptatem esse perspiciatis aliquid deserunt commodi ratione suscipit.
          Sapiente veniam nesciunt unde?
          Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -70,11 +68,11 @@
          Quos, explicabo?
           오늘의 숙제 : 
 
-1. 스크롤바를 100px 내리면 로고 폰트사이즈를 작게 만들어오십시오.
+          1. 스크롤바를 100px 내리면 로고 폰트사이즈를 작게 만들어오십시오.
 
-반대로 100px 미만으로 내리면 로고 폰트사이즈를 크게 만들어옵시다. 
-
-2. 회원약관 박스를 거의 끝까지 스크롤하면 alert를 띄워줍시다.
+          반대로 100px 미만으로 내리면 로고 폰트사이즈를 크게 만들어옵시다. 
+          
+          2. 회원약관 박스를 거의 끝까지 스크롤하면 alert를 띄워줍시다.
         </div>
 
         <script>

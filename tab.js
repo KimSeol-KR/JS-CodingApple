@@ -11,15 +11,29 @@ function buttonClick (btnNum){
     $('.tab-button').eq(btnNum).addClass('orange');
     $('.tab-content').eq(btnNum).addClass('show');
 }
-$('.tab-button').eq(0).on('click',function(btnNum){
-btnNum = 0;//.eq(0) 은 인덱싱
-buttonClick(btnNum);
-});
-$('.tab-button').eq(1).on('click',function(btnNum){
-    btnNum = 1;//.eq(0) 은 인덱싱
-    buttonClick(btnNum);
-    });
-$('.tab-button').eq(2).on('click',function(btnNum){
-btnNum = 2;//.eq(0) 은 인덱싱
-buttonClick(btnNum);
-});
+// $('.tab-button').eq(0).on('click',function(btnNum){
+// btnNum = 0;//.eq(0) 은 인덱싱
+// buttonClick(btnNum);
+// });
+// $('.tab-button').eq(1).on('click',function(btnNum){
+//     btnNum = 1;//.eq(0) 은 인덱싱
+//     buttonClick(btnNum);
+//     });
+// $('.tab-button').eq(2).on('click',function(btnNum){
+// btnNum = 2;//.eq(0) 은 인덱싱
+// buttonClick(btnNum);
+// });
+
+//for 문 == 코드 복붙 (반복실행)
+
+    for (var i = 0; i < 3; i++){
+        console.log("하요");
+    }
+
+    let count = $('.tab-button').length;
+
+    for (let btnNum = 0; btnNum < count; btnNum++){
+        $('.tab-button').eq(btnNum).on('click',function(){
+            buttonClick(btnNum);
+            });
+    }

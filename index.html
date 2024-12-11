@@ -32,8 +32,26 @@
 	  </div>
 
     <script>
-      $('.black-bg').on('click',function(){
-        document.querySelector('.black-bg').classList.remove('alert');
+
+      //이벤트 버블링
+      
+      $('.black-bg').on('click',function(e){
+
+        // //이벤트 객체
+        // e.target; // 유저가 실제로 누른 요소
+        // e.currentTarget; //이벤트 리스너 달린 곳 
+        // this;
+        // e.preventDefault(); // 기본동작 막기
+        // e.stopPropagation(); // 내 상위요소로 이벤트 버블링을 막아줌
+        console.log(e.target);
+        console.log(document.querySelector('.black-bg'));
+
+        if (e.target == document.querySelector('.black-bg')){
+          //제이쿼리는 $(e.target) == $(어쩌고) 나 $(어쩌구).is($(어쩌구구)) 로 비교
+          document.querySelector('.black-bg').classList.remove('alert');
+        }
+
+
       });
     </script>
 

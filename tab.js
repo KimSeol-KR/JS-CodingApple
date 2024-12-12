@@ -26,9 +26,9 @@ function buttonClick (btnNum){
 
 //for 문 == 코드 복붙 (반복실행)
 
-    for (var i = 0; i < 3; i++){
-        console.log("하요");
-    }
+    // for (var i = 0; i < 3; i++){
+    //     console.log("하요");
+    // }
 
     let count = $('.tab-button').length;
 

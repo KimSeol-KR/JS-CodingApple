@@ -51,6 +51,32 @@
           display: block;
         }
       </style>
+      <div class="container mt-3">
+        <div class="card p-3">
+          <span>상품명</span>
+          <span>가격</span>
+        </div>  
+      
+      </div>
+
+      <script>
+
+        var car = ['소나타',50000,'white']; //array 자료형 (순서 O) 자료간 정렬 가능(.sort()) ,자르기 가능(.slice(1,3))
+        car[0] = '아반떼'; //변경 및 추가
+        console.log(car[0]); // 자료를 꺼내려면 인덱싱 하면 됨
+
+        // object 나 array 자료형 안에 array 나 object 자료형 첨가 가능
+
+        var car2 = {name : '소나타', price : [50000, 3000 ,4000]}; //object 자료형 {key : value , ...} (순서 X)
+        // car2.price = 60000; //변경 및 추가
+        console.log(car2['name'] , car2.price); //변수명['key'] ==> []에 변수 넣기 가능 or 변수명.key 로 자료 꺼냄
+        
+        document.querySelectorAll('span')[0].innerHTML = car2.name;
+        document.querySelectorAll('span')[1].innerHTML = car2.price[0];
+        
+        // {} 안에 있으면 무조건 object 자료형
+
+      </script>
       
       <div class="container mt-5">
         <ul class="list">

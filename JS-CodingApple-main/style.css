@@ -1,0 +1,54 @@
+.list-group{
+	display: none;
+}
+
+.show{
+	display: block;
+}
+
+.black-bg{
+	width : 100%;
+	height : 100%;
+	position : fixed;
+	background: rgba(0,0,0,0.5);
+	z-index : 5;
+	padding: 30px;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 1s;
+}
+
+.white-bg{
+	width: 70%;
+	height: 50%;
+	background: rgb(253, 253, 253);
+	
+}
+
+.alert{
+	visibility: visible;
+	opacity: 1;
+	
+}
+.navbar{
+	position: fixed;
+	width: 100%;
+	
+}
+.navbar-brand{
+	transition: all 0.5s;
+}
+.navbar-scroll{
+	font-size: 10px;
+	transition: all 0.5s;
+}
+.line{
+	position: fixed;
+	width: 100%;
+	margin-top: 5.7vh;
+	background-color: black;
+	height: 1vh;
+}
+.hide{
+	visibility: hidden;
+}

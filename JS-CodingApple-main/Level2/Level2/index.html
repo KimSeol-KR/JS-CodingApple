@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2</title>
+</head>
+<body>
+    
+    <div>
+
+        <p>태조 이성계가 대어난 년도는?</p>
+        <form action="">
+            <input type="text" name="" id="answer">
+            <button id="send-answer" type="button">제출</button>
+        </form>
+        <script>
+            var count = 0;
+            
+            document.querySelector('#send-answer').addEventListener('click',function(){
+                
+                count += 1;
+                console.log(count);
+               
+                let answer = document.querySelector('#answer').value;
+               
+                if(count > 3){ // and 연산자 사용하면 좀 더 간단해짐
+                    alert("기회소진")
+                }else{
+                    if(answer == 1335){
+                    alert("성공");
+                    }else{
+                        alert("오답");
+                    }
+                }
+            })
+            
+            
+        </script>
+    </div>
+
+
+
+    <script>
+
+        let age = 21;
+        const homeTown = "Ulsan";
+
+
+        var 예금액;
+        var 미래예금액 ; //잔고
+        let 이자;
+        
+        function 이자율계산(예금액){
+            if(예금액 < 50000){
+                이자 = 예금액 * 0.15;
+                예금액 = 예금액 + 이자;
+                미래예금액 = 예금액 + (예금액 * 0.15);
+            }else{   
+                미래예금액 = 예금액 * (1.2 ** 2);
+            }
+            console.log(미래예금액);
+        }
+
+        var first = 360;
+        function 커피리필(first){
+           let final =  first + (first * 2 / 3) + ((first / 9) * 4);
+           console.log(final);
+        }
+    </script>
+</body>
+</html>

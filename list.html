@@ -91,6 +91,9 @@
       <option>100</option>
     </select>
     
+    
+  </form>
+
     <script>
       const a = document.querySelectorAll('.form-select')[0];
       const b = document.querySelectorAll('.form-select')[1];
@@ -109,8 +112,20 @@
      })
      
     </script>
-    
-  </form>
+
+    <div id="test">
+
+    </div>
+
+    <script>
+
+      var ab = document.createElement('p'); //HTMl 요소 생성
+      ab.innerHTML = "ss"; //요소 내용 변경
+      // ab.classList.add(); //클래스 부여
+      document.querySelector('#test').appendChild(ab); //선택 요소안에 추가
+      
+    </script>
+
 
 
 

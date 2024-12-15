@@ -85,6 +85,8 @@
     <select class="form-select mt-2">
       <option>모자</option>
       <option>셔츠</option>
+      <option>바지</option>
+
     </select>
     <select class="form-select mt-2 hide">
       <option>95</option>
@@ -105,6 +107,18 @@
       console.log(this1);
         if(a.value == '셔츠'){
           b.classList.remove('hide');
+          var option = `
+      <option>95</option>
+      <option>100</option>`
+      $('.form-select').eq(1).html(''); //html 비우기
+      $('.form-select').eq(1).append(option);
+        }else if(a.value == '바지'){
+          var option = `
+      <option>28</option>
+      <option>30</option>`
+      b.classList.remove('hide');
+       $('.form-select').eq(1).html(''); //html 비우기
+       $('.form-select').eq(1).append(option);
         }else{
           b.classList.add('hide');
         }
@@ -124,7 +138,18 @@
       // ab.classList.add(); //클래스 부여
       document.querySelector('#test').appendChild(ab); //선택 요소안에 추가
       
-    </script>
+      var x = '<p>안녕</p>';
+      document.querySelector('#test').insertAdjacentHTML('beforeend',x);
+      
+      // insertAdjacentHTML는 요소안에 문자형 HTML을 넣어주는 함수, beforeend 는 안쪽 맨 밑
+      // 제이쿼리는 append 
+   </script>
+
+   <script>
+
+
+  
+   </script>
 
 
 

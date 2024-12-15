@@ -92,64 +92,100 @@
       <option>95</option>
       <option>100</option>
     </select>
-    
-    
+
+
   </form>
 
-    <script>
-      const a = document.querySelectorAll('.form-select')[0];
-      const b = document.querySelectorAll('.form-select')[1];
+  <script>
+    var pants = [28, 30, 32];
+    var shirts = [95, 100, 105];
 
-     a.addEventListener('input',function(e){
+
+    const a = document.querySelectorAll('.form-select')[0];
+    const b = document.querySelectorAll('.form-select')[1];
+
+    a.addEventListener('input', function (e) {
       var eC = e.currentTarget.value; // e.currentTarget 이벤트 리스너가 달린 곳
-      var this1 = this.value; //this
+      var this1 = this.value; //this 를 funcrion 안에서 쓰면 this 가 알맞게 재정의 됨
+      //반면에 arrow function 에서 this 는 밖에서 가져옴
       console.log(eC);
       console.log(this1);
-        if(a.value == '셔츠'){
-          b.classList.remove('hide');
-          var option = `
-      <option>95</option>
-      <option>100</option>`
-      $('.form-select').eq(1).html(''); //html 비우기
-      $('.form-select').eq(1).append(option);
-        }else if(a.value == '바지'){
-          var option = `
-      <option>28</option>
-      <option>30</option>`
-      b.classList.remove('hide');
-       $('.form-select').eq(1).html(''); //html 비우기
-       $('.form-select').eq(1).append(option);
-        }else{
-          b.classList.add('hide');
-        }
+      if (a.value == '셔츠') {
+        b.classList.remove('hide');
+        $('.form-select').eq(1).html('');
+        shirts.forEach(function (a) {
+          $('.form-select').eq(1).append(`<option>${a}</option>`);
+        })
+      } else if (a.value == '바지') {
+        b.classList.remove('hide');
+        $('.form-select').eq(1).html('');
 
-     })
-     
-    </script>
+        pants.forEach((k) => { //arrow function
+          //arrow function 는 함수안의 this 뜻이 달라질 수 있다  
+          //arrow function은 파라미터가 하나면 () 소괄호 생략해도 봐줍니다. 
+          // 함수 중괄호 안에 return 한 줄 밖에 없으면 { } 중괄호와 return 동시에 생략해도 봐줍니다.
+          
+          $('.form-select').eq(1).append(`<option>${k}</option>`);
+        })//array 자료 개수만큼 반복 
+        // forEach 의 콜백함수 첫번째 파라미터는 반복 할 때 의 ARRAY안의 데이터
+        // 두번째 파라미터는 0부터 증가한 값 for 의 i
+      } else {
+        b.classList.add('hide')
+      }
 
-    <div id="test">
+    })
+    //반복문의 용도 2 : array,object 데이터를 전부 꺼낼 때 사용
 
-    </div>
+    var obj = { name: 'kim', age: 20 }
 
-    <script>
+    for (var key in obj) { // object 자료 개수만큼 반복문을 돌려줌
+      console.log(obj[key]);
+    }
 
-      var ab = document.createElement('p'); //HTMl 요소 생성
-      ab.innerHTML = "ss"; //요소 내용 변경
-      // ab.classList.add(); //클래스 부여
-      document.querySelector('#test').appendChild(ab); //선택 요소안에 추가
-      
-      var x = '<p>안녕</p>';
-      document.querySelector('#test').insertAdjacentHTML('beforeend',x);
-      
-      // insertAdjacentHTML는 요소안에 문자형 HTML을 넣어주는 함수, beforeend 는 안쪽 맨 밑
-      // 제이쿼리는 append 
-   </script>
+    //  if(a.value == '셔츠'){
+    //       b.classList.remove('hide');
+    //       var option = `
+    //   <option>95</option>
+    //   <option>100</option>`
+    //   $('.form-select').eq(1).html(''); //html 비우기
+    //   $('.form-select').eq(1).append(option);
+    //     }else if(a.value == '바지'){
+    //       var option = `
+    //   <option>28</option>
+    //   <option>30</option>`
+    //   b.classList.remove('hide');
+    //    $('.form-select').eq(1).html(''); //html 비우기
+    //    $('.form-select').eq(1).append(option);
+    //     }else{
+    //       b.classList.add('hide');
+    //     }
 
-   <script>
+    //  })
+  </script>
+
+  <div id="test">
+
+  </div>
+
+  <script>
+
+    var ab = document.createElement('p'); //HTMl 요소 생성
+    ab.innerHTML = "ss"; //요소 내용 변경
+    // ab.classList.add(); //클래스 부여
+    document.querySelector('#test').appendChild(ab); //선택 요소안에 추가
+
+    var x = '<p>안녕</p>';
+    document.querySelector('#test').insertAdjacentHTML('beforeend', x);
+
+    // insertAdjacentHTML는 요소안에 문자형 HTML을 넣어주는 함수, beforeend 는 안쪽 맨 밑
+    // 제이쿼리는 append 
+  </script>
+
+  <script>
 
 
-  
-   </script>
+
+  </script>
 
 
 

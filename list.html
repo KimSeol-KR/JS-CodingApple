@@ -187,7 +187,49 @@
 
   </script>
 
+ <!-- <form action="링크" method="post">
 
+  post 요청 (데이터 보내주기 , 유저데이터 DB 에 저장하기)
+  새로고침 됨
+
+ </form> -->
+
+ <!-- Ajax: 새로고침 없이 Get,Post -->
+<script>
+
+$.get('https://codingapple1.github.io/hello.txt').done(function(data){
+  //.done 함수 로 성공시 함수 실행 , .done(function(여기에 data값 있음))
+  console.log(data);
+
+}).fail(function(){
+  console.log('실패함'); //ajax get 실패시 
+})
+
+// $.post('https://codingapple1.github.io/hello.txt', {name:'kim'}).done(function(data){
+
+$.get('https://codingapple1.github.io/price.json').done(function(data){
+  console.log(data); //{price: 5000} object 데이터 이므로 
+  console.log(data.price); // key 값을 알려주면 됩니당
+})
+
+
+// 썡 자바스크립트로 쓰는 법
+fetch('https://codingapple1.github.io/price.json')
+// JSON : 서버통신시 문자형식으로만 통신이 가능해서 object 같은 자료형도
+//통신이 가능 하게끔 "데이터" 형식의 문자열로 표현 한 것
+.then(res => res.json()) // 받아온 JSON 을 object 로 바꿔줌 
+.then(data => {
+  console.log(data);
+})
+.catch(error => {
+  console.log(error);
+})
+
+
+
+
+
+</script>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

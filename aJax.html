@@ -25,14 +25,34 @@
               <h5>Card title</h5>
               <p>가격 : 70000</p>
             </div> -->
-
-
+            
+            
         </div>
     </div>
     <div class="container">
         <button class="btn btn-danger">더보기</button>
     </div>
     <script>
+        function getElementCard() {
+            //함수로 축약할 때 안에 미지의 변수같은게 있으면 파라미터로 바꾸는게 좋다고 했는데
+            // a, i 이런 변수는 이미 콜백함수에 의해 파라미터화가 되어있기 때문에 a, i는 신경안써도 될듯요
+            
+            $.get('https://codingapple1.github.io/js/more2.json').done((data1) => {
+    
+    
+                data1.forEach((a, i) => {
+                    var card = `<div class="col-sm-4">
+                    <img src="https://via.placeholder.com/600" class="w-100">
+                    <h5 class="new">${a.title}</h5> 
+                    <p class="newPrice">${a.price}</p>
+                    </div>`
+                    document.querySelector('.row').insertAdjacentHTML('beforeend', card);
+                });
+    
+            })
+            document.querySelector('.btn').style.display = 'none';
+        }
+       
         var click = 0;
 
         $('.btn').on('click', function () {
@@ -54,26 +74,12 @@
                 })
             }
             else if (click == 2) {
-                $.get('https://codingapple1.github.io/js/more2.json').done((data1) => {
-
-
-                    data1.forEach((a, i) => {
-                        var card = `<div class="col-sm-4">
-                       <img src="https://via.placeholder.com/600" class="w-100">
-                       <h5 class="new">${a.title}</h5> 
-                       <p class="newPrice">${a.price}</p>
-                       </div>`
-                        document.querySelector('.row').insertAdjacentHTML('beforeend', card);
-                    });
-
-                })
-                document.querySelector('.btn').style.display = 'none';
+               getElementCard();
             }
         })
 
-        //함수로 바꿔보기  
-        //함수로 축약할 때 안에 미지의 변수같은게 있으면 파라미터로 바꾸는게 좋다고 했는데
-        // a, i 이런 변수는 이미 콜백함수에 의해 파라미터화가 되어있기 때문에 a, i는 신경안써도 될듯요
+
+
 
     </script>
 

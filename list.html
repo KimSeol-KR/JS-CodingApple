@@ -18,32 +18,41 @@
 
 <body>
 
-  <div class="card-group container">
-    <div class="card">
-      <img src="https://via.placeholder.com/600">
-      <div class="card-body">
-        <h5 class="title">Card title</h5>
-        <p>가격 : <span class="price">70000</span></p>
-        <button class="btn btn-danger">주문하기</button>
+  <div class="row">
+
+    <div class="card-group container">
+      <div class="card">
+        <img src="https://via.placeholder.com/600">
+        <div class="card-body">
+          <h5 class="title">Card title</h5>
+          <p>가격 : <span class="price">70000</span></p>
+          <button class="btn btn-danger">주문하기</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/600">
+        <div class="card-body">
+          <h5 class="title">Card title</h5>
+          <p>가격 : <span class="price">70000</span></p>
+          <button class="btn btn-danger">주문하기</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/600">
+        <div class="card-body">
+          <h5 class="title">Card title</h5>
+          <p>가격 : <span class="price">70000</span></p>
+          <button class="btn btn-danger">주문하기</button>
+        </div>
       </div>
     </div>
-    <div class="card">
-      <img src="https://via.placeholder.com/600">
-      <div class="card-body">
-        <h5 class="title">Card title</h5>
-        <p>가격 : <span class="price">70000</span></p>
-        <button class="btn btn-danger">주문하기</button>
-      </div>
-    </div>
-    <div class="card">
-      <img src="https://via.placeholder.com/600">
-      <div class="card-body">
-        <h5 class="title">Card title</h5>
-        <p>가격 : <span class="price">70000</span></p>
-        <button class="btn btn-danger">주문하기</button>
-      </div>
-    </div>
+
   </div>
+  <div class="container" style="margin-top: 5%;">
+    <button class="btn btn-danger" id="replace"> 가격순정렬 </button>
+  </div>
+
+
 
   <script>
     var products = [
@@ -51,6 +60,83 @@
       { id: 1, price: 50000, title: 'Springfield Shirt' },
       { id: 2, price: 60000, title: 'Black Monastery' }
     ];
+
+    $('#replace').on('click', function () { //버튼을 누르면
+
+      products.sort(function (a, b) {//각각의 a,b 에 오브젝트 자료가 하나씩 들어감
+        return a.price - b.price;//각각의 오브젝트 자료에서 비교할 key 값을 추출 후 비교
+      });
+      
+      $('.card-group').html(''); //html 싹 비우고
+
+      products.forEach((a, i) => {
+        var card = `<div class="card">
+        <img src="https://via.placeholder.com/600">
+        <div class="card-body">
+          <h5 class="title">${a.title}</h5>
+          <p>가격 : <span class="price">${a.price}</span></p>
+          <button class="btn btn-danger">주문하기</button>
+        </div>
+      </div>`;
+        $('.card-group').append(card);//html 추가
+      });
+
+    });
+
+    // array 자료형 정렬  함수는 두 개의 배열 element를 파라미터로 입력 받습니다.
+    //  이 함수가 a, b 두개의 element를 파라미터로 입력받을 경우,
+    //  이 함수가 리턴하는 값이 0보다 작을 경우,  a가 b보다 앞에 오도록 정렬하고,
+    //  이 함수가 리턴하는 값이 0보다 클 경우, b가 a보다 앞에 오도록 정렬합니다.
+    //  만약 0을 리턴하면, a와 b의 순서를 변경하지 않습니다.
+
+
+    //.sort() 함수
+    var 어레이 = [1, 2, 3, 4, 5, 10];
+    var 어레이2 = ['a', 'b', 'z', 'a'];
+    // 어레이2.sort(); //문자순 정렬은 .sort
+    어레이.sort(function (a, b) {
+      return a - b //숫자 오름차순 정렬
+      return b - a //숫자 내림차순 정렬
+    });
+    어레이2.sort(function (a, b) {
+      if (a < b) return 1;
+      if (a > b) return -1;
+      if (a === b) return 0;
+      //문자 내림차순 정렬
+    });
+    console.log(어레이2);
+    
+    //.filter() 함수
+    var 어레이필터 =  어레이.filter(function(a){ //원하는것만 필터링 a = 각각의 자료
+      return 조건식 // a < 3 같은 조건식을 만족하면 필터링 //sort함수와 다르게 원본 변형이 없음
+    });
+    
+    //.map() 함수 : array 자료를 전부 변형 ==> 환전 같은거 할 때 써도 좋을 듯요
+    var 어레이변형 =  어레이.map(function(a){ //원하는것만 필터링 a = 각각의 자료
+      return 변형할식 // a * 3 같은 
+    });
+    
+   
+   
+    1. "상품명 다나가순 정렬" 버튼과 기능을 만들어오십시오. ==> sort() 내림차순 정렬 후 html 갈아엎기
+      누르면 상품이 '다나가' 순으로 정렬되어야합니다.
+
+    2. "6만원 이하 상품보기" 버튼과 기능을 만들어오십시오.   ==> filter() 후 html 갈아엎기
+    누르면 6만원 이하 상품만 보여야합니다. 
+
+    html 갈아 엎는건 함수로 만들어도 될듯요
+
+
+
+
+
+
+
+
+
+
+
+
 
     //step 1 : 기능 구현 프레임 잡기
     // document.querySelector('.title').innerHTML = products[0].title;
@@ -124,7 +210,7 @@
           //arrow function 는 함수안의 this 뜻이 달라질 수 있다  
           //arrow function은 파라미터가 하나면 () 소괄호 생략해도 봐줍니다. 
           // 함수 중괄호 안에 return 한 줄 밖에 없으면 { } 중괄호와 return 동시에 생략해도 봐줍니다.
-          
+
           $('.form-select').eq(1).append(`<option>${k}</option>`);
         })//array 자료 개수만큼 반복 
         // forEach 의 콜백함수 첫번째 파라미터는 반복 할 때 의 ARRAY안의 데이터
@@ -187,49 +273,49 @@
 
   </script>
 
- <!-- <form action="링크" method="post">
+  <!-- <form action="링크" method="post">
 
   post 요청 (데이터 보내주기 , 유저데이터 DB 에 저장하기)
   새로고침 됨
 
  </form> -->
 
- <!-- Ajax: 새로고침 없이 Get,Post -->
-<script>
+  <!-- Ajax: 새로고침 없이 Get,Post -->
+  <script>
 
-$.get('https://codingapple1.github.io/hello.txt').done(function(data){
-  //.done 함수 로 성공시 함수 실행 , .done(function(여기에 data값 있음))
-  console.log(data);
+    $.get('https://codingapple1.github.io/hello.txt').done(function (data) {
+      //.done 함수 로 성공시 함수 실행 , .done(function(여기에 data값 있음))
+      console.log(data);
 
-}).fail(function(){
-  console.log('실패함'); //ajax get 실패시 
-})
+    }).fail(function () {
+      console.log('실패함'); //ajax get 실패시 
+    })
 
-// $.post('https://codingapple1.github.io/hello.txt', {name:'kim'}).done(function(data){
+    // $.post('https://codingapple1.github.io/hello.txt', {name:'kim'}).done(function(data){
 
-$.get('https://codingapple1.github.io/price.json').done(function(data){
-  console.log(data); //{price: 5000} object 데이터 이므로 
-  console.log(data.price); // key 값을 알려주면 됩니당
-})
-
-
-// 썡 자바스크립트로 쓰는 법
-fetch('https://codingapple1.github.io/price.json')
-// JSON : 서버통신시 문자형식으로만 통신이 가능해서 object 같은 자료형도
-//통신이 가능 하게끔 "데이터" 형식의 문자열로 표현 한 것
-.then(res => res.json()) // 받아온 JSON 을 object 로 바꿔줌 
-.then(data => {
-  console.log(data);
-})
-.catch(error => {
-  console.log(error);
-})
+    $.get('https://codingapple1.github.io/price.json').done(function (data) {
+      console.log(data); //{price: 5000} object 데이터 이므로 
+      console.log(data.price); // key 값을 알려주면 됩니당
+    })
 
 
+    // 썡 자바스크립트로 쓰는 법
+    fetch('https://codingapple1.github.io/price.json')
+      // JSON : 서버통신시 문자형식으로만 통신이 가능해서 object 같은 자료형도
+      //통신이 가능 하게끔 "데이터" 형식의 문자열로 표현 한 것
+      .then(res => res.json()) // 받아온 JSON 을 object 로 바꿔줌 
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.log(error);
+      })
 
 
 
-</script>
+
+
+  </script>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

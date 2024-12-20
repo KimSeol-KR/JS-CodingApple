@@ -49,15 +49,17 @@
 
   </div>
   <div class="container" style="margin-top: 5%;">
-    <button class="btn btn-danger" id="replace"> 가격순정렬 </button>
+    <button class="btn btn-danger" id="filter"> 필터 </button>
+    <button class="btn btn-danger" id="replace"> 가격 낮은순 </button>
+    <button class="btn btn-danger" id="asas"> 이름역순 </button>
   </div>
 
 
 
   <script>
     var products = [
-      { id: 0, price: 70000, title: 'Blossom Dress' },
-      { id: 1, price: 50000, title: 'Springfield Shirt' },
+      { id: 0, price: 70000, title: 'A Blossom Dress' },
+      { id: 1, price: 90000, title: 'C Springfield Shirt' },
       { id: 2, price: 60000, title: 'Black Monastery' }
     ];
 
@@ -66,7 +68,7 @@
       products.sort(function (a, b) {//각각의 a,b 에 오브젝트 자료가 하나씩 들어감
         return a.price - b.price;//각각의 오브젝트 자료에서 비교할 key 값을 추출 후 비교
       });
-      
+
       $('.card-group').html(''); //html 싹 비우고
 
       products.forEach((a, i) => {
@@ -90,41 +92,81 @@
     //  만약 0을 리턴하면, a와 b의 순서를 변경하지 않습니다.
 
 
-    //.sort() 함수
-    var 어레이 = [1, 2, 3, 4, 5, 10];
-    var 어레이2 = ['a', 'b', 'z', 'a'];
-    // 어레이2.sort(); //문자순 정렬은 .sort
-    어레이.sort(function (a, b) {
-      return a - b //숫자 오름차순 정렬
-      return b - a //숫자 내림차순 정렬
-    });
-    어레이2.sort(function (a, b) {
-      if (a < b) return 1;
-      if (a > b) return -1;
-      if (a === b) return 0;
-      //문자 내림차순 정렬
-    });
-    console.log(어레이2);
-    
-    //.filter() 함수
-    var 어레이필터 =  어레이.filter(function(a){ //원하는것만 필터링 a = 각각의 자료
-      return 조건식 // a < 3 같은 조건식을 만족하면 필터링 //sort함수와 다르게 원본 변형이 없음
-    });
-    
-    //.map() 함수 : array 자료를 전부 변형 ==> 환전 같은거 할 때 써도 좋을 듯요
-    var 어레이변형 =  어레이.map(function(a){ //원하는것만 필터링 a = 각각의 자료
-      return 변형할식 // a * 3 같은 
-    });
-    
-   
-   
-    1. "상품명 다나가순 정렬" 버튼과 기능을 만들어오십시오. ==> sort() 내림차순 정렬 후 html 갈아엎기
-      누르면 상품이 '다나가' 순으로 정렬되어야합니다.
+    // //.sort() 함수
+    // var 어레이 = [1, 2, 3, 4, 5, 10];
+    // var 어레이2 = ['a', 'b', 'z', 'a'];
+    // // 어레이2.sort(); //문자순 정렬은 .sort
+    // 어레이.sort(function (a, b) {
+    //   return a - b //숫자 오름차순 정렬
+    //   return b - a //숫자 내림차순 정렬
+    // });
+    // 어레이2.sort(function (a, b) {
+    //   if (a < b) return 1;
+    //   if (a > b) return -1;
+    //   if (a === b) return 0;
+    //   //문자 내림차순 정렬
+    // });
 
-    2. "6만원 이하 상품보기" 버튼과 기능을 만들어오십시오.   ==> filter() 후 html 갈아엎기
-    누르면 6만원 이하 상품만 보여야합니다. 
 
-    html 갈아 엎는건 함수로 만들어도 될듯요
+    // //.filter() 함수
+    // var 어레이필터 = 어레이.filter(function (a) { //원하는것만 필터링 a = 각각의 자료
+    //   return 조건식 // a < 3 같은 조건식을 만족하면 필터링 //sort함수와 다르게 원본 변형이 없음
+    // });
+
+    // //.map() 함수 : array 자료를 전부 변형 ==> 환전 같은거 할 때 써도 좋을 듯요
+    // var 어레이변형 = 어레이.map(function (a) { //원하는것만 필터링 a = 각각의 자료
+    //   return 변형할식 // a * 3 같은 
+    // });
+
+
+
+    document.querySelector('#asas').addEventListener('click', function () { //버튼을 누르면
+
+      products.sort(function (a, b) {//각각의 a,b 에 오브젝트 자료가 하나씩 들어감
+
+        if (a.title < b.title) return 1;
+        if (a.title > b.title) return -1;
+        if (a.title === b.title) return 0;
+      });
+      console.log(products);
+      $('.card-group').html(''); //html 싹 비우고
+
+      products.forEach((a, i) => {
+        var card = `<div class="card">
+          <img src="https://via.placeholder.com/600">
+          <div class="card-body">
+            <h5 class="title">${a.title}</h5>
+            <p>가격 : <span class="price">${a.price}</span></p>
+            <button class="btn btn-danger">주문하기</button>
+          </div>
+        </div>`;
+        $('.card-group').append(card);//html 추가
+      });
+
+    });
+    document.querySelector('#filter').addEventListener('click', function () { 
+
+    var filtering = products.filter(function (z) {
+      return z.price > 60000;
+        
+      });
+      console.log(products);
+      $('.card-group').html(''); //html 싹 비우고
+
+      filtering.forEach((a, i) => {
+        var card = `<div class="card">
+    <img src="https://via.placeholder.com/600">
+    <div class="card-body">
+      <h5 class="title">${a.title}</h5>
+      <p>가격 : <span class="price">${a.price}</span></p>
+      <button class="btn btn-danger">주문하기</button>
+    </div>
+  </div>`;
+        $('.card-group').append(card);//html 추가
+      });
+
+    });
+    // html 갈아 엎는건 함수로 만들어도 될듯요
 
 
 

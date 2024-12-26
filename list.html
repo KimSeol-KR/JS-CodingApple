@@ -123,7 +123,7 @@
     document.querySelector('#asas').addEventListener('click', function () { //버튼을 누르면
 
       products.sort(function (a, b) {//각각의 a,b 에 오브젝트 자료가 하나씩 들어감
-
+        // return 이 양수면 a 가 오른쪽으로 감
         if (a.title < b.title) return 1;
         if (a.title > b.title) return -1;
         if (a.title === b.title) return 0;

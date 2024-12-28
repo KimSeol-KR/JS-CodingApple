@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+</head>
+
+<body>
+    <h2>장바구니</h2>
+    <div class="list">
+        <p class="cartList"></p>
+    </div>
+
+    <script>
+        var cart = JSON.parse(localStorage.cart);
+        cart.forEach((a, i) => {
+            document.querySelector('.list').c
+        });
+        document.querySelector('.cartList').innerHTML = cart;
+    </script>
+
+</body>
+
+</html>
+
+
+
+<!-- 내가 했던 것,,,
+
+1. 카드하단 구매버튼추가하고 그거 누르면 누른 상품의 이름을 localStorage에 저장하기
+
+버튼 이벤트 감지
+버튼기준 형재요소중 a.title 값 추출
+그 값을 어레이 자료형에 넣음
+어레이 자료형을 json 으로 로컬스토리지에 넣기
+
+<script>
+
+var count = 0;
+
+$('.btn').eq(0).on('click',function(){
+    var child2 = document.querySelector('.pTag0');
+    var child1 = child2.previousSibling;
+    let valueArray = [child1.previousSibling.innerText]
+    var JsonA = JSON.stringify(valueArray);
+    var storagEmpty = localStorage.getItem('cart');
+    if(storagEmpty == null){
+        localStorage.setItem('cart',JsonA);
+    }else{
+        var outPut = localStorage.getItem('cart');
+        var newArray = JSON.parse(outPut);
+        localStorage.removeItem('cart');
+        count += 1;
+        newArray[count] = valueArray
+        var newValue = JSON.stringify(newArray);
+        localStorage.setItem('cart',newValue);
+    }
+});
+$('.btn').eq(1).on('click',function(){
+    var child2 = document.querySelector('.pTag1');
+    var child1 = child2.previousSibling;
+    let valueArray = [child1.previousSibling.innerText]
+    var JsonA = JSON.stringify(valueArray);
+    var storagEmpty = localStorage.getItem('cart');
+    if(storagEmpty === null){
+        localStorage.setItem('cart',JsonA);
+    }else{
+        var outPut = localStorage.getItem('cart');
+        var newArray = JSON.parse(outPut);
+        localStorage.removeItem('cart');
+        count += 1;
+        newArray[count] = valueArray
+        var newValue = JSON.stringify(newArray);
+        localStorage.setItem('cart',newValue);
+    }
+});
+$('.btn').eq(2).on('click',function(){
+    var child2 = document.querySelector('.pTag2');
+    var child1 = child2.previousSibling;
+    let valueArray = [child1.previousSibling.innerText]
+    var JsonA = JSON.stringify(valueArray);
+    var storagEmpty = localStorage.getItem('cart');
+    if(storagEmpty === null){
+        localStorage.setItem('cart',JsonA);
+    }else{
+        var outPut = localStorage.getItem('cart');
+        var newArray = JSON.parse(outPut);
+        localStorage.removeItem('cart');
+        count += 1;
+        newArray[count] = valueArray
+        var newValue = JSON.stringify(newArray);
+        localStorage.setItem('cart',newValue);
+    }
+});
+</script> -->

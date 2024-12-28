@@ -47,6 +47,8 @@
             </div>
         </div>
 
+        <a href="cart.html"> 장바구니 </a>
+
 <!-- html 요소에 자료 숨기기
             dataset 사용   data-자료이름 ="데이터 값" 으로 지정 후 
             셀렉터.dataset.자료이름  -->
@@ -64,9 +66,9 @@
                 var card = `<div class="card">
             <img src="https://via.placeholder.com/600">
             <div class="card-body">
-            <h5 class="title" ,data-id = ${i}>${a.title}</h5>
-            <p class = "pTag${i}">가격 : <span class="price">${a.price}</span></p>
-            <button class="btn btn-danger" id="buy">주문하기</button>
+                <h5 class="title" ,data-id = ${i}>${a.title}</h5>
+                <p class = "pTag${i}">가격 : <span class="price">${a.price}</span></p>
+                <button class="btn btn-danger" id="buy">주문하기</button>
             </div>
             </div>`;
             
@@ -83,7 +85,7 @@
             localStorage.setItem('num', newArr);
             var 꺼내기 = localStorage.getItem('num');
             JSON.parse(꺼내기);//JSON -> array,object
-            console.log(JSON.parse(꺼내기)[1]);
+            // console.log(JSON.parse(꺼내기)[1]);
             localStorage.removeItem('num');
 
            
@@ -92,88 +94,26 @@
 
         </script>
 
-오늘의 숙제 : 
 
-1. 카드하단 구매버튼추가하고 그거 누르면 누른 상품의 이름을 localStorage에 저장하기
+        <script>
+            $('.btn').click(function(e){//이벤트 버블링이 일어나므로 이벤트리스너 하나로 가능
+                var title = $(e.target).siblings('h5').text(); //e.target 내가 지금 누른것 , siblings() : 형제요소찾기
 
-버튼 이벤트 감지
-버튼기준 형재요소중 a.title 값 추출
-그 값을 어레이 자료형에 넣음
-어레이 자료형을 json 으로 로컬스토리지에 넣기
-
-<script>
-
-$('.btn').eq(0).on('click',function(){
-    var child2 = document.querySelector('.pTag0');
-    var child1 = child2.previousSibling;
-    let valueArray = [child1.previousSibling.innerText]
-    var JsonA = JSON.stringify(valueArray);
-    if(localStorage.key === null){
-        localStorage.setItem('cart',JsonA);
-    }else{
-        var outPut = localStorage.getItem('cart');
-        var newArray = JSON.parse(outPut);
-        localStorage.removeItem('cart');
-        newArray += ',' + valueArray;
-        var newValue = JSON.stringify(newArray);
-        localStorage.setItem('cart',newValue);
-    }
-});
-$('.btn').eq(1).on('click',function(){
-    var child2 = document.querySelector('.pTag1');
-    var child1 = child2.previousSibling;
-    let valueArray = [child1.previousSibling.innerText]
-    var JsonA = JSON.stringify(valueArray);
-    if(localStorage.key === null){
-        localStorage.setItem('cart',JsonA);
-    }else{
-        var outPut = localStorage.getItem('cart');
-        var newArray = JSON.parse(outPut);
-        localStorage.removeItem('cart');
-        newArray += ',' + valueArray;
-        var newValue = JSON.stringify(newArray);
-        localStorage.setItem('cart',newValue);
-    }
-});
-$('.btn').eq(2).on('click',function(){
-    var child2 = document.querySelector('.pTag2');
-    var child1 = child2.previousSibling;
-    let valueArray = [child1.previousSibling.innerText]
-    var JsonA = JSON.stringify(valueArray);
-    if(localStorage.key === null){
-        localStorage.setItem('cart',JsonA);
-    }else{
-        var outPut = localStorage.getItem('cart');
-        var newArray = JSON.parse(outPut);
-        localStorage.removeItem('cart');
-        newArray += ',' + valueArray;
-        var newValue = JSON.stringify(newArray);
-        localStorage.setItem('cart',newValue);
-    }
-});
-</script>
- 
+                if(localStorage.getItem('cart') != null){
+                    var output = JSON.parse(localStorage.cart);
+                    output.push(title);//어레이에 값 넣기
+                    localStorage.setItem('cart',JSON.stringify(output));
+                }else{
+                    localStorage.setItem('cart',JSON.stringify([title]));
+                }
+            })
+        </script>
 
 
 
  
  
 
-(팁1) 내가 누른 요소의 형제요소를 찾는 법을 알아야될 수도 있겠군요 
-
-(팁2) localStorage가 비어있을 때는 array를 추가하면 되겠지만 
-
-localStorage에 이미 뭐가 있을 때는 array를 수정해야합니다.
-
- 
-
- 
-
-2. cart.html 같은 파일 하나 만들어서 (장바구니 페이지)
-
-그 페이지 방문시 localStorage에 있던 상품명들을 꺼내서 전부 진열해서 보여주면 됩니다.
-
-디자인 신경쓸 필요없이 상품명들만 전부 잘 보이면 성공입니다. 
 </body>
 
 </html>

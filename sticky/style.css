@@ -1,0 +1,17 @@
+.grey{
+    background: lightgray;
+    height: 2000px;
+    margin-top: 500px;
+}
+.image{
+    float: right;
+    width: 400px;
+    position: sticky;
+    top: 100px; 
+    /* 상단에서 100px 에 고정
+    fixed 부모박스 넘어서면 해제*/
+}
+.text{
+    float: left;
+    width: 300px;
+}

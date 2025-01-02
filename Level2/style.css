@@ -1,6 +1,6 @@
 .slide-container{
     width: 300vw;
-    transition: all 1s;
+    /* transition: all 1s; */
     /* transform: translateX(-100vw); margin-left 보다 부드러움 */
 }
 .slide-box{

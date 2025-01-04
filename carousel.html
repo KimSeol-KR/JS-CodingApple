@@ -7,20 +7,20 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <title>캐러셀 (이미지슬라이드)</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Level2/style.css">
 </head>
 
 <body>
     <div style="overflow: hidden;">
         <div class="slide-container">
             <div class="slide-box" draggable="false">
-                <img src="img/car1.png" alt="" draggable="false">
+                <img src="Level2/img/car1.png" alt="" draggable="false">
             </div>
             <div class="slide-box">
-                <img src="img/car2.png" alt="" draggable="false">
+                <img src="Level2/img/car2.png" alt="" draggable="false">
             </div>
             <div class="slide-box">
-                <img src="img/car3.png" alt="" draggable="false">
+                <img src="Level2/img/car3.png" alt="" draggable="false">
             </div>
         </div>
     </div>
@@ -46,6 +46,7 @@
         let 시작좌표 = 0;
         let 클릭 = false;
         let 움직인거리;
+        let page = 1;
 
         $('.slide-box').eq(0).on('mousedown', function (e) {
             시작좌표 = e.clientX;
@@ -53,63 +54,66 @@
         });
 
         $('.slide-box').eq(0).on('mousemove', function (e) {
-            if (클릭 == true) {
+            if (클릭 == true && e.clientX - 시작좌표 < 0) {
                 $('.slide-container').css('transform', `translateX(${e.clientX - 시작좌표}px )`)
+            } else {
+                $('.slide-container').css('transform', `translateX(${0}px )`)//첫번째 요소보다 왼쪽으로 드래그 막기
             }
         });
 
         $('.slide-box').eq(0).on('mouseup', function (e) {
             클릭 = false;
-            if (e.clientX - 시작좌표 <= -250) {
-                $('.slide-container').css('transition', 'all 0.5s').css('transform', 'translateX(-100vw)');
+            if ((e.clientX - 시작좌표 <= -(window.innerWidth / 3))) {
+                $('.slide-container').css('transform', 'translateX(-100vw)');
+                console.log('아');
             }
             else {
-
                 $('.slide-container').css('transition', 'all 0.5s').css('transform', 'translateX(0vw)');
+                
             }
-            setTimeout(()=>{
+            setTimeout(() => {
                 $('.slide-container').css('transition', 'none')
-            },500)
+            }, 500)
         })
 
         $('.slide-box').eq(1).on('mousedown', function (e) {
             시작좌표 = e.clientX;
             클릭 = true;
-            
+
         });
         $('.slide-box').eq(1).on('mousemove', function (e) {
             if (클릭 == true) {
-                $('.slide-container').css('transform', `translateX(${e.clientX - 시작좌표 - window.innerWidth }px)`)
+                $('.slide-container').css('transform', `translateX(${e.clientX - 시작좌표 - window.innerWidth}px)`)
                 console.log(시작좌표);
             }
         });
-        
+
         $('.slide-box').eq(1).on('mouseup', function (e) {
             클릭 = false;
-            if (e.clientX - 시작좌표 - (window.innerWidth/3) <= -((window.innerWidth/6)+(window.innerWidth/3))) {
-                console.log((window.innerWidth/6)+window.innerWidth/3);
+            if (e.clientX - 시작좌표 - (window.innerWidth / 3) <= -((window.innerWidth / 6) + (window.innerWidth / 3))) {
+                console.log((window.innerWidth / 6) + window.innerWidth / 3);
                 $('.slide-container').css('transition', 'all 0.5s').css('transform', 'translateX(-200vw)');
-            }else if(e.clientX - 시작좌표 >= window.innerWidth/3){//뷰포트 3등분이 각각의 사진크기
+            } else if (e.clientX - 시작좌표 >= window.innerWidth / 3) {//뷰포트 3등분이 각각의 사진크기 , 첫번째 사진에서는 
                 $('.slide-container').css('transition', 'all 0.5s').css('transform', 'translateX(0vw)');
             }
             else {
 
                 $('.slide-container').css('transition', 'all 0.5s').css('transform', 'translateX(-100vw)');
             }
-            setTimeout(()=>{
+            setTimeout(() => {
                 $('.slide-container').css('transition', 'none')
-            },500)
+            }, 500)
         });
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
         // 터치 이벤트
         $('.slide-box').eq(0).on('touchstart', function (e) {
             시작좌표 = e.touches[0].clientX;
@@ -131,9 +135,9 @@
             else {
                 $('.slide-container').css('transition', 'all 0.5s').css('transform', 'translateX(0vw)');
             }
-            setTimeout(()=>{
+            setTimeout(() => {
                 $('.slide-container').css('transition', 'none')
-            },500)
+            }, 500)
         })
 
 
